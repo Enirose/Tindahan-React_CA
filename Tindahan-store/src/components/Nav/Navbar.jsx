@@ -1,20 +1,16 @@
 import { StyledNav } from "./Navbar.styled";
-import { Container } from "../Styled/Container.styled";
 import { NavLink } from "react-router-dom";
+import {BsCart4} from "react-icons/bs";
 
-export default function Nav () {
+export default function Navbar () {
     return (
         <StyledNav>
-                <Nav>
-                  <ul>
-                    <li>
-                        <NavLink to='/'>Home</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/'>Contact</NavLink>
-                    </li>
-                  </ul>
-                </Nav>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/Contact">Contact</NavLink>
+          <NavLink to="/Cart">
+            <BsCart4 size="28" />
+            <span>{}</span>
+          </NavLink>     
         </StyledNav>
     )
 }
