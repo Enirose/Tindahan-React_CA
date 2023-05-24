@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./components/Styled/Global";
 import Footer from "./components/Footer/Footer";
+import Layout from "./components/Layout/Layout";
 
 
 const theme = {
@@ -19,11 +20,10 @@ export default function App () {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
-        <Header />
+        <Layout />
         <Container>
           <h1>Hello Eni</h1>
         </Container>
-        <Footer /> 
       </>
     </ThemeProvider>
   )

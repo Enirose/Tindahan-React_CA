@@ -20,6 +20,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   img {
-    max-width: 100%;
+    max-width: 10rem;
   }
 `

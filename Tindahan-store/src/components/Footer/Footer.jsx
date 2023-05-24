@@ -6,11 +6,9 @@ export default function Footer () {
     return (
         <StyledFooter>
             <Container>
-                <h1>Hubble</h1>
+                <h1>Hule</h1>
                 <p>&copy; 2023 Tindahan | Enirose Hellum</p>
             </Container>
         </StyledFooter>
-            
-        
     )
 }

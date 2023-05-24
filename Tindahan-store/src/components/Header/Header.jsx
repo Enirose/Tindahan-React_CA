@@ -5,11 +5,8 @@ export default function Header () {
     return (
         <StyledHeader>
             <Container>
-                <h1>Hubble</h1>
+                <img src='public/logoGreen.png' alt="Logo" />
             </Container>
-            
         </StyledHeader>
-            
-        
     )
 }
