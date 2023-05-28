@@ -14,6 +14,9 @@
 // }
 
 import React, { useState, useEffect } from 'react';
+import { StyledCard } from '../../components/Styled/Card.styled';
+import { Container } from '../../components/Styled/Container.styled';
+
 
 /**
  * Our API hook
@@ -58,9 +61,10 @@ export default function Home() {
   }
 
     return (
-    <div>
+    <Container>
+        
       {data.map((product) => (
-        <div className='StyledCard' key={product.id}>
+        <StyledCard key={product.id}>
           <div> <img src={product.imageUrl} alt={product.title}/></div>
           <h2> {product.title}</h2>
           <div> Description: {product.description}</div>
@@ -68,9 +72,9 @@ export default function Home() {
 
 
           {/* Render other product details as needed */}
-        </div>
+        </StyledCard>
       ))}
-    </div>
+    </Container>
   );
 }
 

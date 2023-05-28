@@ -43,4 +43,15 @@ export default function ApiComponents() {
   }
 
   return <div>Data loaded</div>;
+    //     {data.map((product) => (
+    //     <StyledCard key={product.id}>
+    //       <div> <img src={product.imageUrl} alt={product.title}/></div>
+    //       <h2> {product.title}</h2>
+    //       <div> Description: {product.description}</div>
+    //       <button>View</button>
+
+
+    //       {/* Render other product details as needed */}
+    //     </StyledCard>
+    //   ))}
 }
