@@ -51,6 +51,7 @@ export default function Home() {
   const { data, isLoading, isError } = useApi(
     'https://api.noroff.dev/api/v1/online-shop/',
   );
+  const [search, setSearch] = useState('');
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -61,20 +62,32 @@ export default function Home() {
   }
 
     return (
-    <Container>
-        
-      {data.map((product) => (
-        <StyledCard key={product.id}>
-          <div> <img src={product.imageUrl} alt={product.title}/></div>
-          <h2> {product.title}</h2>
-          <div> Description: {product.description}</div>
-          <button>View</button>
+      <div>
+        <div>
+          <input placeholder='Search..' onChange={event => setSearch(event.target.value)}/>
+        </div>
+        <Container>
+          
+        {data.filter(product => {
+          if (search === ''){
+            return product;
+          } else if (product.title.toLowerCase().includes(search.toLowerCase())) {
+            return product;
+          }
+        }).map((product) => (
+          <StyledCard key={product.id}>
+            <div> <img src={product.imageUrl} alt={product.title}/></div>
+            <h2> {product.title}</h2>
+            <div> Description: {product.description}</div>
+            <button>View</button>
 
 
-          {/* Render other product details as needed */}
-        </StyledCard>
-      ))}
-    </Container>
+            {/* Render other product details as needed */}
+          </StyledCard>
+        ))}
+      </Container>
+      </div>
+      
   );
 }
 

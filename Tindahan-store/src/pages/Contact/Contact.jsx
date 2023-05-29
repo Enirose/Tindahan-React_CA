@@ -22,6 +22,7 @@ const Schema = yup
         body: yup
             .string()
             .trim()
+            .min(5, 'Must be at least 5 characters long')
             .max(5000, "Cannot be longer than 5000 characters")
             .required(),
     })
