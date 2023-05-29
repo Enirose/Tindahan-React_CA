@@ -31,7 +31,7 @@ export default function Product() {
     getProduct();
   }, [id]);
 
-  if (isLoading) {
+  if (isLoading || !productList)  {
     return <div>Loading...</div>;
   }
 
@@ -39,9 +39,9 @@ export default function Product() {
     return <div>Error</div>;
   }
 
-  if (!productList) {
-    return null; // Render nothing if productList is still null
-  }
+//   if (!productList) {
+//     return null; // Render nothing if productList is still null
+//   }
 
 //     const ratingStars = Array.from({ length: productList.rating }).map((_, index) => (
 //     <RiStarSFill size='28' />
@@ -54,9 +54,8 @@ export default function Product() {
           <img src={productList.imageUrl} alt={productList.title} />
         </div>
         <h2>{productList.title}</h2>
-        <h5>{productList.price}</h5>
-        <h5>{productList.discountedPrice}</h5>
-        <div>Description: {productList.description}</div>
+        <h4>{productList.price} {productList.discountedPrice}</h4>
+        <h5>Description: {productList.description}</h5>
         <Link to="/cart">
           <button>Add to cart</button>
         </Link>
