@@ -18,6 +18,11 @@ const theme = {
 };
 
 export default function App() {
+  const addToCart  = (product) => {
+    console.log('product added to cart:', product);
+  };
+
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -25,9 +30,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home/>} />
-            <Route path="/product/:id" element={<Product/>} />
+            <Route path="/product/:id" element={<Product addToCart={addToCart}/>} />
             <Route path="/contact" element={<Contact />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/cart" element={<Cart addToCart={addToCart} />}></Route>
           </Route>
         </Routes>
       </Router>
