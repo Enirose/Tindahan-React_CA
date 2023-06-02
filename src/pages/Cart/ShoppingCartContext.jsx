@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useContext } from "react";
-import { createContext } from "react";
+import { createContext, useContext } from "react";
+import { useLocalStorage } from '../../components/LocalStorage';
 
 
 
@@ -11,7 +10,7 @@ export function UseShoppingCart () {
 }
 
 export function CartProvider ({ children }) {
-    const [ cartItems, setCartItems ] = useState()
+    const [ cartItems, setCartItems ] = useLocalStorage('Cart', [])
 
     function getProductQnty(productId){
         return cartItems.find(item => item.id === productId)?.quantity || 0
@@ -49,5 +48,25 @@ export function CartProvider ({ children }) {
         })
     }
 
+    function removeFromCartItem(productId) {
+        setCartItems( currItems => {
+            return currItems.filter( item = item.id !== productId)
+        })
+    }
+
+    function clear () {
+        return setCartItems ([]);
+    }
+
+    const cartBagQnty = cartItems.reduce (
+        (quantityAmount, item) => item.quantity + quantityAmount, 0
+    )
+
+    return (
+        <ShoppingCartContext.Provider value={{getProductQnty, addProductAndQnty, decreaseOneProduct, removeFromCartItem, clear, cartBagQnty}}>
+            { children }
+        </ShoppingCartContext.Provider>
+
+    )
 
 }
