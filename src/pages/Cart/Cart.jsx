@@ -1,55 +1,56 @@
+import { UseShoppingCart } from './ShoppingCartContext';
+// import { useApi } from '../../API/ApiComponents'
+import { Link } from 'react-router-dom';
+import { Button } from 'bootstrap';
+import * as useApi from '../../App'
+import { Container } from '../../components/Styled/Container.styled';
 
-import React, { useState } from 'react';
 
 export default function Cart() {
-  const [cartItems, setCartItems] = useState([]);
 
-  const handleAddToCart = (product) => {
-    setCartItems([...cartItems, product]);
-  };
+  const { totalCost, clear } = UseShoppingCart();
+  const { data, isLoading, isError } = useApi('https://api.noroff.dev/api/v1/online-shop',[]);
 
-  const handleQuantityChange = (productId, quantity) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
-    );
-  };
+  if ( isLoading ) {
+    return <div>Loading...</div>
+  }
 
-  const handleRemoveItem = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((item) => item.id !== productId)
-    );
-  };
+  if ( isError ) {
+    return <div> Error occured! </div>
+  }
+
+  const cartItems = data.find(i => i.id === id)
+  if (product == null) return null
+
 
   return (
-    <div>
-      <h2>Cart</h2>
+    <Container>
+      <h1>Cart</h1>
       {cartItems.length === 0 ? (
-        <p>No items in cart</p>
+        <p>Your cart is empty.</p>
       ) : (
-        <ul>
+        <div>
           {cartItems.map((item) => (
-            <li key={item.id}>
-              <div>{item.title}</div>
+            <StyledCard key={item.id}>
               <div>
-                Quantity:
-                <input
-                  type="number"
-                  value={item.quantity}
-                  onChange={(e) =>
-                    handleQuantityChange(item.id, parseInt(e.target.value))
-                  }
-                />
+                <img src={item.imageUrl} alt={item.title} />
               </div>
-              <button onClick={() => handleRemoveItem(item.id)}>
-                Remove
+              <h2>{item.title}</h2>
+              <h3>{item.description}</h3>
+              <h4>Price: {item.discountedPrice}</h4>
+              <div>Quantity: 
+                <span>{item.quantity}</span>
+              </div>
+              <button onClick={() => clear(item.id)}>
+                Remove from cart
               </button>
-            </li>
+            </StyledCard>
           ))}
-        </ul>
+          <h3>Total: {totalCost()}</h3>
+          <Link to={'/checkout'}><Button onClick={() => clear()}>Checkout</Button></Link>
+        </div>
       )}
-    </div>
+    </Container>
   );
 }
 
@@ -91,7 +92,15 @@ export default function Cart() {
 //               </div>
 //               <h2>{item.title}</h2>
 //               <h4>Price: {item.price}</h4>
-//               <h4>Quantity: {item.quantity}</h4>
+//               <div>Quantity: 
+//                 <input
+//                   type="number"
+//                   value={item.quantity}
+//                   onChange={(e) =>
+//                     handleQuantityChange(item.id, parseInt(e.target.value))
+//                   }
+//                 />
+//               </div>
 //               <button onClick={() => handleRemoveFromCart(item.id)}>
 //                 Remove from cart
 //               </button>
