@@ -1,53 +1,36 @@
-import { UseShoppingCart } from './ShoppingCartContext';
-// import { useApi } from '../../API/ApiComponents'
-import { Link } from 'react-router-dom';
-import { Button } from 'bootstrap';
-import * as useApi from '../../App'
+import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
+import { useContext } from 'react';
 import { Container } from '../../components/Styled/Container.styled';
+import { StyledCard } from '../../components/Styled/Card.styled';
 
 
 export default function Cart() {
 
-  const { totalCost, clear } = UseShoppingCart();
-  const { data, isLoading, isError } = useApi('https://api.noroff.dev/api/v1/online-shop',[]);
+  const { cart, increaseQuantity, decreaseQuantity} = useContext(ShoppingCartContext);
 
-  if ( isLoading ) {
-    return <div>Loading...</div>
-  }
-
-  if ( isError ) {
-    return <div> Error occured! </div>
-  }
-
-  const cartItems = data.find(i => i.id === id)
-  if (product == null) return null
-
+  console.log(cart);
 
   return (
     <Container>
       <h1>Cart</h1>
-      {cartItems.length === 0 ? (
+      {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
         <div>
-          {cartItems.map((item) => (
+          {cart.map((item) => (
             <StyledCard key={item.id}>
               <div>
                 <img src={item.imageUrl} alt={item.title} />
               </div>
               <h2>{item.title}</h2>
-              <h3>{item.description}</h3>
-              <h4>Price: {item.discountedPrice}</h4>
-              <div>Quantity: 
-                <span>{item.quantity}</span>
-              </div>
-              <button onClick={() => clear(item.id)}>
-                Remove from cart
-              </button>
+              <h4>Price: {item.price}</h4>
+              <div>Quantity: {item.quantity}</div>
+              <button onClick={() => increaseQuantity(item.id)}> + </button>
+              <button onClick={() => decreaseQuantity(item.id)}> - </button>
             </StyledCard>
           ))}
-          <h3>Total: {totalCost()}</h3>
-          <Link to={'/checkout'}><Button onClick={() => clear()}>Checkout</Button></Link>
+          {/* <h3>Total: {totalPrice(item.id)}</h3>
+          <Link to={'/checkout'}><Button onClick={() => clear()}>Checkout</Button></Link> */}
         </div>
       )}
     </Container>

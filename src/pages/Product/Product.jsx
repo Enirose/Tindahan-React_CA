@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container } from '../../components/Styled/Container.styled';
 import { StyledCard } from '../../components/Styled/Card.styled';
-import { UseShoppingCart } from '../Cart/ShoppingCartContext';
+import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 
 export default function Product({ }) {
-  const { addProductAndQnty } = UseShoppingCart
+  const { addToCart} = useContext(ShoppingCartContext);
   const [productList, setProductList] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const { id } = useParams();
+  const { id: productId } = useParams();
 
   useEffect(() => {
     async function getProduct() {
@@ -17,7 +17,7 @@ export default function Product({ }) {
         setIsLoading(true);
         setIsError(false);
 
-        const response = await fetch(`https://api.noroff.dev/api/v1/online-shop/${id}`);
+        const response = await fetch(`https://api.noroff.dev/api/v1/online-shop/${productId}`);
         const json = await response.json();
 
         setProductList(json);
@@ -30,7 +30,7 @@ export default function Product({ }) {
     }
 
     getProduct();
-  }, [id]);
+  }, [productId]);
 
   if (isLoading || !productList) {
     return <div>Loading...</div>;
@@ -40,24 +40,26 @@ export default function Product({ }) {
     return <div>Error</div>;
   }
 
+  const { id, title, imageUrl, price, discountedPrice, description } = productList;
+
   return (
     <Container>
-      <StyledCard key={productList.id}>
+      <StyledCard key={id}>
         <div>
-          <img src={productList.imageUrl} alt={productList.title} />
+          <img src={imageUrl} alt={title} />
         </div>
-        <h2>{productList.title}</h2>
+        <h2>{title}</h2>
         {productList.discountedPrice ? (
           <h4>
-            <span>{productList.discountedPrice}</span> {productList.price}
+            <span>{discountedPrice}</span> {price}
           </h4>
         ) : (
-          <h4>{productList.price}</h4>
+          <h4>{price}</h4>
         )}
-        <h5>Description: {productList.description}</h5>
-        <Link to="/cart">
-          <button onClick={addProductAndQnty}>Add to cart</button>
-        </Link>
+        <h5>Description: {description}</h5>
+        {/* <Link to="/cart"> */}
+        <button onClick={() => addToCart ({id, title, imageUrl, price: discountedPrice ?? price})}>Add to cart</button>
+        {/* </Link> */}
       </StyledCard>
     </Container>
   );

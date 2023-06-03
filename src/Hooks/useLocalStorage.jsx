@@ -5,7 +5,7 @@ export default function useLocalStorage(key, initialValue) {
     const [value, setValue] = useState(()=> {
         const load = localStorage.getItem(key);
 
-        if (laod != null) return JSON.parse(load);
+        if (load != null) return JSON.parse(load);
 
         if (typeof initialValue === 'function') {
             return initialValue();

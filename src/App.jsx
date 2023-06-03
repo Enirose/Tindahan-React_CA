@@ -8,6 +8,7 @@ import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
 import Product from "./pages/Product/Product";
+import { ShoppingCartProvider } from "./Context/ShoppingCartContext";
 
 const theme = {
   colors: {
@@ -20,18 +21,20 @@ const theme = {
 export default function App() {
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home/>} />
-            <Route path="/product/:id" element={<Product />} />
-            <Route path="/contact" element={<Contact />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
-          </Route>
-        </Routes>
-      </Router>
-    </ThemeProvider>
+    <ShoppingCartProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home/>} />
+              <Route path="/product/:id" element={<Product />} />
+              <Route path="/contact" element={<Contact />}></Route>
+              <Route path="/cart" element={<Cart />}></Route>
+            </Route>
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </ShoppingCartProvider>
   );
 }
