@@ -64,8 +64,7 @@ export default function Home() {
           <StyledCard key={product.id}>
             <div> <img src={product.imageUrl} alt={product.title}/></div>
             <h2> {product.title}</h2>
-            <h4>{product.price} {product.discountedPrice}</h4>
-            <div>{product.description}</div>
+            <h4>{product.discountedPrice}</h4>
             <Link to={`/product/${product.id}`}><button>View Product</button></Link>
 
 
