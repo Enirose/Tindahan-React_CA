@@ -47,8 +47,12 @@ export function ShoppingCartProvider ({ children }) {
         });
     }
 
+    const clear = (itemID) => {
+        return setCart ([]);
+    }
+
     return (
-        <ShoppingCartContext.Provider value={{addToCart, removeFromCart, cart, increaseQuantity, decreaseQuantity, totalItems, totalPrice}}>
+        <ShoppingCartContext.Provider value={{addToCart, removeFromCart, cart, increaseQuantity, decreaseQuantity, totalItems, totalPrice, clear}}>
             { children }
         </ShoppingCartContext.Provider>
 

@@ -2,11 +2,11 @@ import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 import { useContext } from 'react';
 import { Container } from '../../components/Styled/Container.styled';
 import { StyledCard } from '../../components/Styled/Card.styled';
-
+import { Link } from 'react-router-dom';
 
 export default function Cart() {
 
-  const { cart, increaseQuantity, decreaseQuantity} = useContext(ShoppingCartContext);
+  const { cart, increaseQuantity, decreaseQuantity, clear, totalPrice} = useContext(ShoppingCartContext);
 
   console.log(cart);
 
@@ -29,8 +29,8 @@ export default function Cart() {
               <button onClick={() => decreaseQuantity(item.id)}> - </button>
             </StyledCard>
           ))}
-          {/* <h3>Total: {totalPrice(item.id)}</h3>
-          <Link to={'/checkout'}><Button onClick={() => clear()}>Checkout</Button></Link> */}
+          <h3>Total: {totalPrice}</h3>
+          <Link to={'/checkout'}><button onClick={() => clear()}>Checkout</button></Link>
         </div>
       )}
     </Container>

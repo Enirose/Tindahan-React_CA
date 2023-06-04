@@ -9,6 +9,7 @@ import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
 import Product from "./pages/Product/Product";
 import { ShoppingCartProvider } from "./Context/ShoppingCartContext";
+import Checkout from "./pages/Checkout/Checkout";
 
 const theme = {
   colors: {
@@ -31,6 +32,7 @@ export default function App() {
               <Route path="/product/:id" element={<Product />} />
               <Route path="/contact" element={<Contact />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
+              <Route path="/checkout" element={<Checkout />}></Route>
             </Route>
           </Routes>
         </Router>
