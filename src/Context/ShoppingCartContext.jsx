@@ -16,7 +16,7 @@ export function ShoppingCartProvider ({ children }) {
             const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
 
             if (existingItem) {
-                return prevCart.map((cartItem) => (cartItem.id === item.id ? {...cartItem, quantity: cartItem.id + 1 } : cartItem));
+                return prevCart.map((cartItem) => (cartItem.id === item.id ? {...cartItem, quantity: cartItem.quantity + 1 } : cartItem));
             }
             return [...prevCart, { ...item, quantity:1}];
         });
@@ -47,12 +47,23 @@ export function ShoppingCartProvider ({ children }) {
         });
     }
 
-    const clear = (itemID) => {
+    const discountPercentage = (discountedPrice, price) => {
+        if (discountedPrice) {
+
+            const discount = price - discountedPrice;
+            const discountPercent = Math.round((discount/price) * 100);
+
+            return discountPercent;
+        }
+        return 0;
+    };
+
+    const clear = () => {
         return setCart ([]);
     }
 
     return (
-        <ShoppingCartContext.Provider value={{addToCart, removeFromCart, cart, increaseQuantity, decreaseQuantity, totalItems, totalPrice, clear}}>
+        <ShoppingCartContext.Provider value={{addToCart, removeFromCart, cart, increaseQuantity, decreaseQuantity, totalItems, totalPrice, discountPercentage, clear}}>
             { children }
         </ShoppingCartContext.Provider>
 

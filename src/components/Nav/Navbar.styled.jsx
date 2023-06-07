@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 export const StyledNav = styled.nav`
     /* background-color: beige; */
-      display: flex;
+    display: flex;
     gap: 20px;
     justify-content: space-between;
     align-items: center;

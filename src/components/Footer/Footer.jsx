@@ -5,9 +5,7 @@ import { StyledFooter } from "./Footer.styled";
 export default function Footer () {
     return (
         <StyledFooter>
-            <Container>
-                <p>&copy; 2023 Tindahan | Enirose Hellum</p>
-            </Container>
+            <p>&copy; 2023 Tindahan | Enirose Hellum</p>
         </StyledFooter>
     )
 }
