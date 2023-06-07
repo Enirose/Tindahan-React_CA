@@ -23,15 +23,17 @@ export default function ProductReview ({rating, reviews}) {
 
     return (
         <ReviewsContainer>
-            {/* <div className="rating-container">
+            <div>
+                {/* <div className="rating-container">
                 <h3>Rating {stars}</h3>
-            </div> */}
-            <h3>Reviews</h3>
-            {userReviews.length > 0 ? (
-                userReviews
-            ) : (
-                <p className="reviews-container">This item has no reviews yet!</p>
-                )}                  
+                </div> */}
+                <h3>Reviews</h3>
+                {userReviews.length > 0 ? (
+                    userReviews
+                ) : (
+                    <p className="reviews-container">This item has no reviews yet!</p>
+                )}    
+            </div>                
         </ReviewsContainer>
     )
 }

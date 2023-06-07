@@ -105,7 +105,7 @@ export const QuantityValue = styled.span`
 export const TotalCheckoutContainer = styled.div`
    flex-basis: 100%;
    text-align: center;
-   justify-content: center;
+  
 
   @media (min-width: 450px) {
     flex-basis: auto;

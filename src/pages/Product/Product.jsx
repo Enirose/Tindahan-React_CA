@@ -75,13 +75,11 @@ export default function Product({ }) {
             {/* <Link to="/cart"> */}
             <button className='product-button' onClick={() => addToCart ({id, title, imageUrl, price: discountedPrice ?? price})}>Add to cart</button>
             {/* </Link> */}
-            <Container>
-              <ProductReview rating={rating} reviews={reviews}/>
-            </Container>
-              
-            
             
           </StyledCard>
+          <Container>
+              <ProductReview rating={rating} reviews={reviews}/>
+          </Container>
     </ProductContainer>
   );
 }

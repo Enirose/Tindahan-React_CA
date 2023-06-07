@@ -14,8 +14,6 @@ import { styled } from "styled-components";
 //     height: 100%;
 // `
 export const ReviewsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
   align-items: center;
   justify-content: center;
@@ -25,6 +23,7 @@ export const ReviewsContainer = styled.div`
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
+
 
   h3 {
     text-align: center;
@@ -39,6 +38,6 @@ export const ReviewsContainer = styled.div`
   @media (max-width: 480px) {
     /* grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); */
     padding: 20px ;
-    font-size: medium;
+    font-size: small;
   }
 `;
