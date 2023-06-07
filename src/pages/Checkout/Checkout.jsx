@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom"
-import { Container } from "../../components/Styled/Container.styled"
+import { CheckoutContainer, StyledCheckout } from "./Checkout.styled"
+
 
 export default function Checkout () {
     return (
-        <Container>
-            <h2>Thank you!</h2>
-            <h5>Your order number is : 55368</h5>
-            <Link to='/' ><button>Go back to Home page</button></Link>
-        </Container>
-        
+        <CheckoutContainer>
+            <StyledCheckout>
+                <div>
+                    <h2>Thank you!</h2>
+                    <h5>Your order number is:</h5>
+                    <h3>55368</h3>
+                    <Link to='/' ><button>Back to Home</button></Link>
+                </div>
+            </StyledCheckout>
+        </CheckoutContainer>
     )
 }
