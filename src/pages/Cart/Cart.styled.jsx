@@ -1,110 +1,126 @@
 import { styled } from "styled-components";
 
-// export const CartContainer = styled.div `
-//     margin: 0 auto;
-//     align-items: center;
-//     display: flex;
-//     justify-content: center;
-//     flex-wrap: wrap;
-//     gap: 2rem;
-//     align-items: center;
-//     padding: 20px;      
-//     display: grid;
-//     grid-template-columns: repeat(3, 1fr);
-// `
+export const ContainerStyled = styled.div`
+  max-width: 100%;
+    padding: 0 20px;
+    margin: 0;
+    /* height: 100vh; */
+
+    h1 {
+        text-align: center;
+    }
+
+    .cartEmpty {
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #FFF;
+    margin-bottom: 100vh;
+
+    @media (min-width: 400px) {
+      padding: 40px;
+    }
+
+    @media (min-width: 700px) {
+      padding: 80px;
+      
+    }
+
+    @media (min-width: 1000px) {
+      padding: 100px;
+    }
+  }
+`
 
 export const CartContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: flex-start;
-  height: 100vh;
+  margin: 80px;
 
-  @media (min-width: 768px) {
-    justify-content: space-evenly;
+  @media (max-width: 480px) {
+    margin: 20px;
   }
 `;
 
 export const CartStyledCard = styled.div`
   display: flex;
   align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  font-size: medium;
-  height: 100px;
-  margin-bottom: 5px;
-  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: #FFF;
   justify-content: space-evenly;
 
   img {
     width: 100%;
-    height: 90px;
-    object-fit: cover;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
   }
 
   h2 {
+    font-size: 18px;
     margin-bottom: 5px;
-    font-size: 16px;
-    text-align: center;
-
-    @media (max-width: 700px) {
-        font-size: 10px;
-    }
   }
 
   h4 {
-    margin-bottom: 5px;
-    font-size: 10px;
-    @media (min-width: 450px) {
-        font-size: 13px;
-    }
-  }
-
-  div {
-    font-size: 14px;
-  }
-
-  button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
     font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+    margin-bottom: 5px;
   }
 
-  @media (min-width: 750px) {
-    padding: 15px;
-    }
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export const QuantityContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 10px;
 `;
 
 export const QuantityButton = styled.button`
-  margin: 0 5px;
   padding: 5px;
+  margin: 0 5px;
   border: none;
   border-radius: 4px;
   background-color: #007bff;
   color: #fff;
-  font-size: 16px;
   font-weight: bold;
+  text-transform: uppercase;
   cursor: pointer;
 `;
 
 export const QuantityValue = styled.span`
   font-size: 16px;
+  margin: 0 10px;
 `;
 
+// export const TotalCheckoutContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin: 20px 0;
+//   background-color:  #fff;
+//   padding: 20px;
+//   gap: 10px;
+// `;
 export const TotalCheckoutContainer = styled.div`
-   flex-basis: 100%;
+   /* flex-basis: 100%;
    text-align: center;
+   background-color: #fff;
+   padding: 20px; */
+     display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #FFF;
   
 
   @media (min-width: 450px) {
@@ -114,25 +130,19 @@ export const TotalCheckoutContainer = styled.div`
   }
 `;
 
-
 export const TotalPrice = styled.h3`
-  margin: 20px 60px;
   font-size: 20px;
-  text-align: center;
-  background-color: #fff;
-  padding: 10px;
+  margin-bottom: 10px;
 `;
 
 export const CheckoutButton = styled.button`
-  margin-top: 10px;
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
   background-color: #007bff;
   color: #fff;
-  font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
-  align-items: center;
+  margin-bottom: 10px;
 `;

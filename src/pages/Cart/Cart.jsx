@@ -2,7 +2,7 @@ import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 import { useContext } from 'react';
 import { Container } from '../../components/Styled/Container.styled';
 import { Link } from 'react-router-dom';
-import { CartContainer, CartStyledCard, CheckoutButton, QuantityButton, QuantityContainer, QuantityValue, TotalCheckoutContainer, TotalPrice } from './Cart.styled';
+import { CartContainer, CartStyledCard, CheckoutButton, ContainerStyled, QuantityButton, QuantityContainer, QuantityValue, TotalCheckoutContainer, TotalPrice } from './Cart.styled';
 
 export default function Cart() {
 
@@ -11,10 +11,10 @@ export default function Cart() {
   console.log(cart);
 
   return (
-    <Container>
+    <ContainerStyled>
       <h1>Cart</h1>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <h2 className='cartEmpty'>Your cart is empty.</h2>
       ) : (
         <CartContainer>
           <div>
@@ -29,9 +29,9 @@ export default function Cart() {
                     {item.price !== item.discountedPrice ? `${item.price},-` : null}
               </h5> */}
               <QuantityContainer>
-              <QuantityButton onClick={() => increaseQuantity(item.id)}> + </QuantityButton>
-              <QuantityValue>{item.quantity}</QuantityValue>
-              <QuantityButton onClick={() => decreaseQuantity(item.id)}> - </QuantityButton>
+                <QuantityButton onClick={() => increaseQuantity(item.id)}> + </QuantityButton>
+                <QuantityValue>{item.quantity}</QuantityValue>
+                <QuantityButton onClick={() => decreaseQuantity(item.id)}> - </QuantityButton>
               </QuantityContainer>
               
             </CartStyledCard>
@@ -40,6 +40,7 @@ export default function Cart() {
           <TotalCheckoutContainer>
           <TotalPrice>Total: {totalPrice}</TotalPrice>
           <Link to={'/checkout'}><CheckoutButton onClick={() => clear()}>Checkout</CheckoutButton></Link>
+          <br />
           <div>
             <Link to={'/home'}><CheckoutButton>Continue Shopping</CheckoutButton></Link>
           </div>
@@ -47,7 +48,7 @@ export default function Cart() {
           </TotalCheckoutContainer>
         </CartContainer>
       )}
-    </Container>
+    </ContainerStyled>
   );
 }
 

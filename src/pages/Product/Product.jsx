@@ -71,7 +71,7 @@ export default function Product({ }) {
               ) : null}
             </h5>
 
-            <h5>{description}</h5>
+            <p>{description}</p>
             {/* <Link to="/cart"> */}
             <button className='product-button' onClick={() => addToCart ({id, title, imageUrl, price: discountedPrice ?? price})}>Add to cart</button>
             {/* </Link> */}
