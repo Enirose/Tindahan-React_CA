@@ -11,12 +11,10 @@ export default function Navbar () {
 
     return (
       <Container>
-        <Link to='/'>
-            <img src='/logoorange.png' alt="Logo" />
-        </Link>
         <StyledNav>
-          
-                    
+          <Link to='/'>
+            <img src='/logoorange.png' alt="Logo" />
+          </Link> 
           <NavLink to="/">Home</NavLink>
           <NavLink to="/Contact">Contact</NavLink>
           <NavLink to="/Cart">

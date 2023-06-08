@@ -7,4 +7,9 @@ export const StyledFooter = styled.footer`
     bottom: 0;
     margin-top: auto;
     
+    p {
+        color: #fd7f32;
+        opacity: 5px;
+    }
+    
 `

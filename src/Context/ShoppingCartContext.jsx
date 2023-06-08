@@ -7,7 +7,7 @@ export const ShoppingCartContext = createContext({})
 export function ShoppingCartProvider ({ children }) {
     const [ cart, setCart ] = useLocalStorage ('Cart', []);
 
-    const totalItems = cart.reduce ((count, item) => count + item.quantity, 0);
+    const totalItems = cart.reduce ((count, item) => count + item.quantity, null);
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
     // Adding product item in the cart

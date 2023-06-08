@@ -5,6 +5,7 @@ import { StyledCard } from '../../components/Styled/Card.styled';
 import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 import { ProductContainer } from './Product.styled';
 import ProductReview from '../../components/ProductReview/ProductReview';
+import { Link } from 'react-router-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IoArrowBackCircle } from "react-icons/io5";
@@ -72,9 +73,9 @@ export default function Product({ }) {
             </h5>
 
             <p>{description}</p>
-            {/* <Link to="/cart"> */}
-            <button className='product-button' onClick={() => addToCart ({id, title, imageUrl, price: discountedPrice ?? price})}>Add to cart</button>
-            {/* </Link> */}
+            <Link to="/cart">
+              <button className='product-button' onClick={() => addToCart ({id, title, imageUrl, price: discountedPrice ?? price})}>Add to cart</button>
+            </Link>
             
           </StyledCard>
           <Container>

@@ -30,17 +30,23 @@ export const ProductsContainer = styled.div `
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     
-
+    
     .product-button {
-        margin-top: 10px;
-        padding: 8px 12px;
-        border: none;
-        border-radius: 4px;
-        background-color: #007bff;
-        color: #fff;
-        font-weight: bold;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        color: #007bff;
         text-transform: uppercase;
-        cursor: pointer;
+        background-color: #dbdada;
+      }
     }
     
     @media (max-width: 768px) {
