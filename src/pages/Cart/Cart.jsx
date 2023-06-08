@@ -42,7 +42,7 @@ export default function Cart() {
           <Link to={'/checkout'}><CheckoutButton onClick={() => clear()}>Checkout</CheckoutButton></Link>
           <br />
           <div>
-            <Link to={'/home'}><CheckoutButton>Continue Shopping</CheckoutButton></Link>
+            <Link to={'/'}><CheckoutButton>Continue Shopping</CheckoutButton></Link>
           </div>
           
           </TotalCheckoutContainer>
