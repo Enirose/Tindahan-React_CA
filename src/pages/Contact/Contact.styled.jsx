@@ -10,12 +10,15 @@ export const ContactForm = styled.form `
     margin-top: auto;
     margin-bottom: 20rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    background-color: #f4f0f0;
 
+    
     input {
         margin-bottom: 10px;
         padding: 10px;
-        border: 1px solid #010000;
+        border: 1px solid #fffafa;
         border-radius: 10px;
+        
     }
 
     p {
@@ -25,6 +28,10 @@ export const ContactForm = styled.form `
     textarea {
        width: auto;
        padding: 20px;
+    }
+
+    label {
+      color: #3c3c3c;
     }
 
     button {

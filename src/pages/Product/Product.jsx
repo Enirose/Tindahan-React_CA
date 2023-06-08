@@ -74,9 +74,9 @@ export default function Product({ }) {
 
             <p>{description}</p>
             <Link to="/cart">
-              <button className='product-button' onClick={() => addToCart ({id, title, imageUrl, price: discountedPrice ?? price})}>Add to cart</button>
+              <button className='product-button' onClick={() => addToCart ({id, title, imageUrl, discountedPrice, price })}>Add to cart</button>
+              {/* <button className='product-button' onClick={() => addToCart ({id, title, imageUrl, price: discountedPrice ?? price})}>Add to cart</button> */}
             </Link>
-            
           </StyledCard>
           <Container>
               <ProductReview rating={rating} reviews={reviews}/>

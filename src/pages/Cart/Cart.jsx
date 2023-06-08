@@ -24,16 +24,24 @@ export default function Cart() {
                 <img src={item.imageUrl} alt={item.title} />
               </div>
               <h2>{item.title}</h2>
-              <h4>Price: {item.price}</h4>
-              {/* <h5 style={{  color: 'red', display: 'inline', textDecoration: item.price !== item.discountedPrice ? 'line-through' : 'none' }}>
-                    {item.price !== item.discountedPrice ? `${item.price},-` : null}
-              </h5> */}
+              <h4>Price: {item.discountedPrice} 
+              </h4>
+              {/* Getting the price or discounted price(undelined) and the discount percentage */}
+              <h5 style={{ color: 'black', display: 'inline' }}>
+                {item.price !== item.discountedPrice ? (
+                  <>
+                    <span style={{ textDecoration: 'line-through' }}>{item.price},-</span>
+                    <span style={{ color: 'red' }}>
+                      {Math.round(((item.price - item.discountedPrice) / item.price) * 100)}%
+                    </span>
+                  </>
+                ) : null}
+              </h5>
               <QuantityContainer>
                 <QuantityButton onClick={() => increaseQuantity(item.id)}> + </QuantityButton>
                 <QuantityValue>{item.quantity}</QuantityValue>
                 <QuantityButton onClick={() => decreaseQuantity(item.id)}> - </QuantityButton>
               </QuantityContainer>
-              
             </CartStyledCard>
           ))}
           </div>
