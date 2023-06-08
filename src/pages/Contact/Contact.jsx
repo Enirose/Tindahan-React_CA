@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Container } from "../../components/Styled/Container.styled";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { ContactForm } from "./Contact.styled";
 
 const Schema = yup
     .object({
@@ -39,17 +40,22 @@ export default function Contact () {
 
     return (
         <Container>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register('fullName', { required: true, minLength: 3, })} name='fullname' placeholder="Full name" />
+            <h1>Get in touch with us!</h1>
+            <ContactForm onSubmit={handleSubmit(onSubmit)}>
+                <label>Name</label>
+                <input {...register('fullName', { required: true, minLength: 3, })} name='fullName' placeholder="Full name" />
                 <p>{errors.fullName?.message}</p>
+                <label>Subject</label>
                 <input {...register('subject', {required:true, minLength: 3,})} placeholder="Subject.." />
                 <p>{errors.subject?.message}</p>
+                <label>Email</label>
                 <input {...register('email', {required: true})} type="email" name="email" placeholder="Email" />
                 <p>{errors.email?.message}</p>
-                <input {...register('body', {required: true, minLength: 3,})} type="body" placeholder="Write your message here..." />
+                <label>Message</label>
+                <textarea {...register('body', {required: true, minLength: 3,})} type="body" placeholder="Write your message here..." />
                 <p>{errors.body?.message}</p>
                 <button type="submit">Submit</button>
-            </form>
+            </ContactForm>
         </Container>
     )
 }

@@ -7,18 +7,6 @@ export const StyledHeader = styled.header`
 
 `
 
-// export const CartIcon = styled(BsCart4)`
-//     font-size: 1.5rem;
-
-//   @media screen and (max-width: 768px) {
-//     font-size: 1.2rem;
-//   }
-
-//   @media screen and (max-width: 480px) {
-//     font-size: 1rem;
-//   }
-// `
-
 export const CartLink = styled.a`
   display: flex;
   align-items: center;

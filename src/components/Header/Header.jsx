@@ -9,9 +9,6 @@ export default function Header () {
     return (
         <StyledHeader>
             <Container>
-                <Link to='/'>
-                    <img src='/logoorange.png' alt="Logo" />
-                </Link>
                 <Navbar />
             </Container>
         </StyledHeader>

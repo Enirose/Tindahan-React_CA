@@ -1,39 +1,54 @@
 import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 import { useContext } from 'react';
 import { Container } from '../../components/Styled/Container.styled';
-import { StyledCard } from '../../components/Styled/Card.styled';
 import { Link } from 'react-router-dom';
+import { CartContainer, CartStyledCard, CheckoutButton, ContainerStyled, QuantityButton, QuantityContainer, QuantityValue, TotalCheckoutContainer, TotalPrice } from './Cart.styled';
 
 export default function Cart() {
 
-  const { cart, increaseQuantity, decreaseQuantity, clear, totalPrice} = useContext(ShoppingCartContext);
+  const { cart, increaseQuantity, decreaseQuantity, clear, totalPrice, discountedPrice} = useContext(ShoppingCartContext);
 
   console.log(cart);
 
   return (
-    <Container>
+    <ContainerStyled>
       <h1>Cart</h1>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <h2 className='cartEmpty'>Your cart is empty.</h2>
       ) : (
-        <div>
-          {cart.map((item) => (
-            <StyledCard key={item.id}>
+        <CartContainer>
+          <div>
+            {cart.map((item) => (
+            <CartStyledCard key={item.id}>
               <div>
                 <img src={item.imageUrl} alt={item.title} />
               </div>
               <h2>{item.title}</h2>
               <h4>Price: {item.price}</h4>
-              <div>Quantity: {item.quantity}</div>
-              <button onClick={() => increaseQuantity(item.id)}> + </button>
-              <button onClick={() => decreaseQuantity(item.id)}> - </button>
-            </StyledCard>
+              {/* <h5 style={{  color: 'red', display: 'inline', textDecoration: item.price !== item.discountedPrice ? 'line-through' : 'none' }}>
+                    {item.price !== item.discountedPrice ? `${item.price},-` : null}
+              </h5> */}
+              <QuantityContainer>
+                <QuantityButton onClick={() => increaseQuantity(item.id)}> + </QuantityButton>
+                <QuantityValue>{item.quantity}</QuantityValue>
+                <QuantityButton onClick={() => decreaseQuantity(item.id)}> - </QuantityButton>
+              </QuantityContainer>
+              
+            </CartStyledCard>
           ))}
-          <h3>Total: {totalPrice}</h3>
-          <Link to={'/checkout'}><button onClick={() => clear()}>Checkout</button></Link>
-        </div>
+          </div>
+          <TotalCheckoutContainer>
+          <TotalPrice>Total: {totalPrice}</TotalPrice>
+          <Link to={'/checkout'}><CheckoutButton onClick={() => clear()}>Checkout</CheckoutButton></Link>
+          <br />
+          <div>
+            <Link to={'/'}><CheckoutButton>Continue Shopping</CheckoutButton></Link>
+          </div>
+          
+          </TotalCheckoutContainer>
+        </CartContainer>
       )}
-    </Container>
+    </ContainerStyled>
   );
 }
 

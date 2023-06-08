@@ -1,16 +1,15 @@
 import { styled } from "styled-components";
 export const StyledNav = styled.nav`
     /* background-color: beige; */
-      display: flex;
+    display: flex;
     gap: 20px;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 10px;
-    border: 1px solid yellow;
+
 
     a {
         text-decoration: none;
-        color: #000000;
+        color: #fd7f32;
         font-size: 1.2rem;
         transition: 0.2s;
     }
@@ -19,8 +18,19 @@ export const StyledNav = styled.nav`
         font-weight: bold;
     }
 
-    & a:hover {
-        background-color: #fff;
+    /* & a:hover {
+        background-color: #fd7f32;
         color: #2b3452;
+    } */
+
+    @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    a {
+      margin-top: 10px;
+      margin-left: 0;
     }
+  }
+  
 `

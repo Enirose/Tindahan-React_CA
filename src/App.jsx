@@ -15,7 +15,7 @@ const theme = {
   colors: {
     header: '#ebfbff',
     body: '#c4acac',
-    footer: '#a6e1e1',
+    footer: '#ebfbff',
   },
 };
 
